@@ -30,14 +30,14 @@ function App() {
 
 const PublicRoute = ({ ...props }) => {
   const token = localStorage.getItem('access-token')  
-  return token !== ''
+  return token && token !== ''
     ? (<Redirect to="/dashboard" />)
     : (<Route {...props} />)
 };
 
 const ProtectedRoute =  ({ ...props }) => {
   const token = localStorage.getItem('access-token')
-  return token !== ''
+  return token && token !== ''
     ? (<Route {...props} />)
     : (<Redirect to="/" />)
 };
