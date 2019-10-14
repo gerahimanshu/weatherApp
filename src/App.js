@@ -9,7 +9,7 @@ import {
   Route,
   Redirect
 } from "react-router-dom";
-import './App.css';
+import './styles/App.scss';
 
 const store = configureStore();
 
