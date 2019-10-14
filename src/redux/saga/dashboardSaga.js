@@ -1,15 +1,15 @@
 import { put, takeLatest } from 'redux-saga/effects'
-import {GET_WEATHER_DATA, GET_WEATHER_DATA_SUCCESS, GET_WEATHER_DATA_FAILURE, CHANGE_LOADING} from '../actions/types';
+import {GET_WEATHER_DATA, GET_WEATHER_DATA_SUCCESS, GET_WEATHER_DATA_FAILURE, CHANGE_LOADING, CHANGE_CITY} from '../actions/types';
 import {Utils} from '../../utils';
 
 function* getWeatherData(action) {
     const {city, successCallback, failureCallback} = action.payload; 
     try {
         yield put({type: CHANGE_LOADING, payload: true})
-        if(city === ''){
-            throw {
-                message: 'City is required!'
-            }
+        if(city === 'Select City..'){
+            throw new Error('City is required!')
+        } else {
+            yield put({type: CHANGE_CITY, payload: city})
         }
         const weatherData = yield fetchWeatherData(Utils.constants.openWeatherMapAPIKey, city)
         const fiveDayForecastData = yield fetchFiveDayWeatherData(Utils.constants.openWeatherMapAPIKey, city)

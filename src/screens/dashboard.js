@@ -41,7 +41,7 @@ class Dashboard extends Component{
     }
     
     render(){
-        const {weatherData, loading} = this.props.dashboard;
+        const {weatherData, loading, cityName} = this.props.dashboard;
         if(loading){
             return <Loader />
         }
@@ -49,6 +49,7 @@ class Dashboard extends Component{
             <div>
                 <h2>Select City</h2>
                 <Select 
+                    value={cityName}
                     data={Utils.cities}
                     onChange={this._handleSelectedCity}
                 />

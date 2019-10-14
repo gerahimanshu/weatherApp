@@ -7,14 +7,10 @@ function* login(action) {
     const {username, password, successCallback, failureCallback} = action.payload; 
     try {
         if(username !== Utils.constants.username){
-            throw {
-                message: 'Useranme Incorrect!'
-            }
+            throw new Error('Useranme Incorrect!')
         }
         if(password !== Utils.constants.password){
-            throw {
-                message: 'Password Incorrect!'
-            }
+            throw new Error('Password Incorrect!')
         }
         const token = uuidv4();
         yield put({type: LOGIN_SUCCESS, payload: token});

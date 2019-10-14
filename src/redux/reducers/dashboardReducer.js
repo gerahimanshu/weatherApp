@@ -1,10 +1,12 @@
 import { 
     CHANGE_LOADING, 
     GET_WEATHER_DATA_SUCCESS, 
-    GET_WEATHER_DATA_FAILURE
+    GET_WEATHER_DATA_FAILURE,
+    CHANGE_CITY
 } from '../actions/types' 
 
 const initialState = {
+    cityName: 'Select City..',
     weatherData: null,
     loading: false,
     error: null
@@ -16,6 +18,11 @@ const dashboardReducer = (state = initialState, action) => {
             return {
                 ...state, 
                 loading: action.payload
+            }
+        case CHANGE_CITY: 
+            return {
+                ...state, 
+                cityName: action.payload
             }
         case GET_WEATHER_DATA_SUCCESS: 
             return {
