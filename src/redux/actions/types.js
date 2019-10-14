@@ -1,0 +1,12 @@
+//------------ LOGIN ACTIONS --------------//
+export const CHANGE_USERNAME = 'CHANGE_EMAIL';
+export const CHANGE_PASSWORD = 'CHANGE_PASSWORD';
+export const PERFORM_LOGIN = 'PERFORM_LOGIN';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_FAILURE = 'LOGIN_FAILURE';
+
+//------------ DASHBOARD ACTIONS ---------//
+export const CHANGE_LOADING = 'CHANGE_LOADING';
+export const GET_WEATHER_DATA = 'GET_WEATHER_DATA';
+export const GET_WEATHER_DATA_SUCCESS = 'GET_WEATHER_DATA_SUCCESS';
+export const GET_WEATHER_DATA_FAILURE = 'GET_WEATHER_DATA_FAILURE';

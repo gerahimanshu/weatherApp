@@ -1,26 +1,45 @@
 import React from 'react';
-import logo from './logo.svg';
+import Login from './screens/login';
+import Dashboard from './screens/dashboard';
+import { Provider } from 'react-redux';
+import configureStore from './redux/store';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect
+} from "react-router-dom";
 import './App.css';
+
+const store = configureStore();
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Provider store={store}>
+        <Router>
+          <Switch>
+            <PublicRoute exact path="/" component={Login} />
+            <ProtectedRoute path="/dashboard" component={Dashboard} />
+          </Switch>
+        </Router>
+      </Provider>
     </div>
   );
 }
+
+const PublicRoute = ({ ...props }) => {
+  const token = localStorage.getItem('access-token')  
+  return token !== ''
+    ? (<Redirect to="/dashboard" />)
+    : (<Route {...props} />)
+};
+
+const ProtectedRoute =  ({ ...props }) => {
+  const token = localStorage.getItem('access-token')
+  return token !== ''
+    ? (<Route {...props} />)
+    : (<Redirect to="/" />)
+};
 
 export default App;
