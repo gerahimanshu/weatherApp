@@ -6,7 +6,7 @@ import {
 } from '../actions/types' 
 
 const initialState = {
-    cityName: 'Select City..',
+    cityName: 'Select City',
     weatherData: null,
     loading: false,
     error: null

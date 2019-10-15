@@ -6,7 +6,7 @@ function* getWeatherData(action) {
     const {city, successCallback, failureCallback} = action.payload; 
     try {
         yield put({type: CHANGE_LOADING, payload: true})
-        if(city === 'Select City..'){
+        if(city === 'Select City'){
             throw new Error('City is required!')
         } else {
             yield put({type: CHANGE_CITY, payload: city})

@@ -18,11 +18,15 @@ class Dashboard extends Component{
     }
 
     _handleSelectedCity = (e) => {
-        this.props.dispatch(actions.getWeatherData(
-            e.target.value, 
-            this._getWeatherDataSuccessCallback, 
-            this._getWeatherDataFailureCallback
-        ))
+        if(e.target.value !== 'Select City'){
+            this.props.dispatch(actions.getWeatherData(
+                e.target.value, 
+                this._getWeatherDataSuccessCallback, 
+                this._getWeatherDataFailureCallback
+            ))
+        }else{
+            this.props.dispatch(actions.clearWeatherData())
+        }
     }
 
     _getWeatherDataSuccessCallback = () => {}
